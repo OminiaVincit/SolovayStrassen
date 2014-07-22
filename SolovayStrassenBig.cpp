@@ -276,8 +276,8 @@ DatType ProbTest( DatType n, DatType num_test ) {
 
 // Run multi-times ProbTest for statics
 bool StaticProbTest( DatType num_test ) {
-	for ( int i = 10; i < 20; i++ )
-		for ( int j = i; j < 20; j++ ) {
+	for ( int i = 0; i < 10; i++ )
+		for ( int j = i; j < 10; j++ ) {
 			DatType n = p[i] * p[j];
 			DatType num_comp = ProbTest( n, num_test );
 			double prob = (double)num_comp / (double)num_test;
@@ -312,6 +312,7 @@ int main( int argc, char* argv[] ) {
 	
 	// Test performance
 	// Find all prime number less than 10000, execute test for 10 times
+	
 	DatType n = 10000;
 	std::cout << "Test for program finding all prime numbers less than  " << n << std::endl;
 	StaticNumOfPrimeTest( n, false );
