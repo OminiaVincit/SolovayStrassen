@@ -15,9 +15,9 @@
 
 #include "BigInt.h"
 
-const DatType NUMTEST = 100;
+const DatType NUMTEST = 25;
 const DatType MAXSIZE = 1000000;
-const DatType NUMSTATIC = 10;
+const DatType NUMSTATISTIC = 10;
 
 // For generate Mersen prime numbers
 DatType p[] = { 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 
@@ -227,7 +227,7 @@ DatType NumOfPrimeTest( DatType n, bool use_big = true, bool debug = false ) {
 }
 
 // Run multi-times NumOfPrimeTest for statics
-bool StaticNumOfPrimeTest( DatType n, bool use_big, DatType numt = NUMSTATIC, bool debug = false ) {
+bool StatisticNumOfPrimeTest( DatType n, bool use_big, DatType numt = NUMSTATISTIC, bool debug = false ) {
 	if ( use_big ) std::cout << "Using BigInt class " << std::endl;
 	else std::cout << "Using long long int type " << std::endl;
 	for ( int i = 0; i < numt; ++i ) {
@@ -275,7 +275,7 @@ DatType ProbTest( DatType n, DatType num_test ) {
 }
 
 // Run multi-times ProbTest for statics
-bool StaticProbTest( DatType num_test ) {
+bool StatisticProbTest( DatType num_test ) {
 	for ( int i = 0; i < 10; i++ )
 		for ( int j = i; j < 10; j++ ) {
 			DatType n = p[i] * p[j];
@@ -315,19 +315,19 @@ int main( int argc, char* argv[] ) {
 	
 	DatType n = 10000;
 	std::cout << "Test for program finding all prime numbers less than  " << n << std::endl;
-	StaticNumOfPrimeTest( n, false );
-	StaticNumOfPrimeTest( n, true );
+	StatisticNumOfPrimeTest( n, false );
+	StatisticNumOfPrimeTest( n, true );
 	
 	std::cout << "Mersen prime number test with long long int type: " << std::endl;
 	MersenTest<DatType>( 9 );
 
 	std::cout << std::endl;
 	std::cout << "Mersen prime number test with Big Int class type: " << std::endl;
-	MersenTest<BigInt>( 13 );
+	MersenTest<BigInt>( 14 );
 
 	// Probability test
 	std::cout << "Probability of non-prime ouput with non-prime input. Random selection for only one time." << std::endl;
-	StaticProbTest(100000);
+	StatisticProbTest(100000);
 
 	return 1;
 }
